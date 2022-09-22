@@ -1,6 +1,6 @@
 ---
 - name: build image and push to docker hub play
-  hosts: k8s
+  hosts: ansible_host
   tasks:
   - name: remove image
     command: docker rmi dtpsdtps/my-hello-world
@@ -8,6 +8,6 @@
   - name: build image
     command: docker build -t dtpsdtps/my-hello-world ~/hello-world
   - name: docker login
-    command: docker login -u dtpsdtps -p oh54285428   // 계정정보 취급주의!
+    command: docker login -u dtpsdtps -p oh54285428   
   - name: push image
-    command: docker push dtpsdtps/my-hello-world
+    command: docker push dtpsdtps/my-hello-world:latest
